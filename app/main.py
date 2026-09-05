@@ -5,9 +5,9 @@ import psycopg
 # Environment variables with defaults
 DB_HOST = os.getenv("DB_HOST", "db")
 DB_PORT = int(os.getenv("DB_PORT", "5432"))
-DB_USER = ...   # TODO: read DB_USER from the environment, defaulting to "appuser"
-DB_PASS = ...   # TODO: read DB_PASS from the environment, defaulting to "secretpw"
-DB_NAME = ...   # TODO: read DB_NAME from the environment, defaulting to "appdb"
+DB_USER = os.getenv("DB_USER", "appuser")  # read DB_USER from the environment, defaulting to "appuser"
+DB_PASS = os.getenv("DB_PASS","secretpw")   # read DB_PASS from the environment, defaulting to "secretpw"
+DB_NAME = os.getenv("DB_NAME", "appdb")   # read DB_NAME from the environment, defaulting to "appdb"
 TOP_N = int(os.getenv("APP_TOP_N", "5"))
 
 
