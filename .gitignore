@@ -219,4 +219,5 @@ __marimo__/
 
 
 .DS_Store
-out/.idea/
+out/
+
