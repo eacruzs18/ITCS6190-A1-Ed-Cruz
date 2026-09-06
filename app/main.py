@@ -74,8 +74,8 @@ def main():
         top = [
             {
                 "city": row[0],
-                "minutes": row()[1],
-                "fare": row()[2]
+                "minutes": int(row[1]),
+                "fare": float(row[2])
             }
             for row in cur.fetchall()
         ]

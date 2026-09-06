@@ -21,8 +21,11 @@ services:
       db:
         condition: service_healthy
     environment:
-      # TODO: set DB_HOST, DB_PORT, DB_USER, DB_PASS and DB_NAME so that the app
-      #       can reach the db service. DB_HOST is the Compose service name.
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: appuser
+      DB_PASS: secretpw
+      DB_NAME: appdb
       APP_TOP_N: "10"
     volumes:
       - ./out:/out
