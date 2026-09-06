@@ -36,27 +36,49 @@ def main():
     conn = connect_with_retry()
     with conn, conn.cursor() as cur:
         # Total number of trips
-        # TODO: write a query that counts the rows in trips
-        cur.execute("...")
+        cur.execute("""
+            SELECT 
+                COUNT(*)
+            FROM trips;
+        """)
         total_trips = cur.fetchone()[0]
 
         # Average fare by city
-        # TODO: return one row per city with the average fare, rounded to 2 decimals,
-        #       ordered by city. Name the second column avg_fare.
         cur.execute("""
-            ...
+            SELECT
+                city,
+                ROUND(AVG(fare), 2) AS avg_fare
+            FROM 
+                trips
+            GROUP BY 
+                city
+            ORDER BY 
+                city;
         """)
         by_city = [{"city": c, "avg_fare": float(a)} for (c, a) in cur.fetchall()]
 
         # Top N trips by duration
-        # TODO: return the TOP_N longest trips (city, minutes, fare), longest first.
-        #       Break ties by city ascending. Use %s for the limit so it stays a
-        #       parameter rather than string formatting.
+
         cur.execute("""
-            ...
+            SELECT
+                city,
+                minutes,
+                fare
+            FROM 
+                trips
+            ORDER BY 
+                minutes DESC,
+                city 
+            LIMIT %s;
         """, (TOP_N,))
-        # TODO: build a list of dicts with keys city, minutes and fare
-        top = ...
+        top = [
+            {
+                "city": row[0],
+                "minutes": row()[1],
+                "fare": row()[2]
+            }
+            for row in cur.fetchall()
+        ]
 
         summary = {
             "total_trips": int(total_trips),
