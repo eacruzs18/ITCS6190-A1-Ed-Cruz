@@ -1,15 +1,12 @@
 # Assignment #1: Containers with Docker
 
-> This project runs a Postgres database and a Python script together inside Docker. 
-> Once the database starts up, the Python script connects to it, calculates trip stats 
-> like averages and top durations, and saves the results as a JSON file.
->
 > **Name: Ed Cruz**
 > **Student ID: 801337361**
 > **Email: ecruz13@charlotte.edu**
 
-A two-container stack: a PostgreSQL database seeded from `db/init.sql`, and a Python app
-that queries it, computes a few statistics, prints them, and writes `out/summary.json`.
+This project runs a Postgres database and a Python script together inside Docker. 
+Once the database starts up, the Python script connects to it, calculates trip stats 
+like averages and top durations, and saves the results as a JSON file.
 
 
 ## Repository layout
